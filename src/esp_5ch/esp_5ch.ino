@@ -320,7 +320,8 @@ void setup()
       else if (error == OTA_END_ERROR) Serial.println("End Failed");
     });
   ArduinoOTA.setHostname(name);
-            
+  ArduinoOTA.begin();       
+  
   Serial.println("Ready");
 }
 

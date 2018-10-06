@@ -197,10 +197,10 @@ bool Mqtt::reconnect()
       
       Serial.println(" try again in 5 seconds");
       // Wait 5 seconds before retrying
-      for(int i=0; i<50; i++)
+      for(int i=0; i<500; i++)
       {
         ArduinoOTA.handle();
-        delay(100);
+        delay(10);
       }
       t += 5000;
     }

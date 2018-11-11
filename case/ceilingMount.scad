@@ -1,9 +1,11 @@
+//nozzel 0.4
+
 /* rail */
 $width = 20;
 $height = 15;
 $thickness = 2;
 $tol = 0.4;
-$wallth = 4*0.6;
+$wallth = 4*0.4;
 $wireout = 24;
 
 module rail(filled = false)
@@ -38,9 +40,15 @@ module inner()
             rail();
 
             //ceiling
-        translate([0,-1,10])
+        translate([0,-0.1,10])
             rotate(a=90, v=[-1,0,0])
-                cylinder(r=3, h=20, $fn=16);
+            {
+                translate([0,0,2])
+                    cylinder(r1=3, r2=6, h=8.5, $fn=32);
+                translate([0,0,10.5])
+                    cylinder(r=6, h=10, $fn=32);
+                cylinder(r=3, h=19, $fn=32);
+            }
         
         //wire
         translate([0,-1,$wireout])
@@ -50,9 +58,9 @@ module inner()
             rotate(a=90, v=[-1,0,0])
                 cylinder(r1=3/2, r2=3, h=$height/6, $fn=16);
         translate([$width/4, 3.8, 0])
-            cylinder(r=2.5/2, h=10, $fn=16);
+            cylinder(r=2.5/2, h=8.5, $fn=16);
         translate([-$width/4, 3.8, 0])
-            cylinder(r=2.5/2, h=10, $fn=16);
+            cylinder(r=2.5/2, h=8.5, $fn=16);
         translate([-$width/2+$thickness+2,-$tol,0])
             rotate(a=45+90, v=[0,0,1])
                 cube([4,4,50]);
@@ -81,7 +89,7 @@ module outer()
         {
             translate([0,-$wallth/2+$height/2-$thickness-$tol-3/2,1.5-1.5])
                 cube([$width+2*$tol + 2*$wallth, $height+$tol+$wallth+3, 3], center=true);
-            translate([-($width+2*$tol)/2 - $wallth,-2.5 -2*$wallth,28])
+            translate([-($width+2*$tol)/2 - $wallth,-2.6 -2*$wallth,28])
                 cube([$width+2*$tol + 2*$wallth, 3+$wallth, 3]);
 
         }
@@ -100,27 +108,27 @@ module outer()
 
             //nose
         translate([0,-4.5,$wireout+0.4])
-            rotate(a=90, v=[-1,0,0])
+            rotate(a=92.75, v=[-1,0,0])
                 cylinder(r=5, h=5, $fn=16);
         translate([0,-10,$wireout+0.4])
             rotate(a=90, v=[-1,0,0])
                 cylinder(r=3.5/2, h=10, $fn=16);
         
         //ceiling
-        translate([0,-$thickness-3-$wallth/2,10])
-            rotate(a=90, v=[-1,0,0])
-                cylinder(r=8, h=20, $fn=16);
+        translate([0,-$thickness-3-$wallth/2-0.21,10])
+            rotate(a=92.75, v=[-1,0,0])
+                    cylinder(r=8, h=20, $fn=16);
                 
-        translate([-$width/2-$thickness+2,-$tol-7.5,-2])
+        translate([-$width/2-$thickness+4,-$tol-7.5,-4])
             rotate(a=45+90, v=[0,0,1])
-                cube([4,4,50]);
-        translate([$width/2+$thickness-2,-$tol-7.5,-2])
+                                                            cube([6,6,50]);
+        translate([$width/2+$thickness-4,-$tol-7.5,-4])
             rotate(a=-45, v=[0,0,1])
-                cube([4,4,50]);
+                cube([6,6,50]);
     }
 }
 
-//inner();
-outer();
+inner();
+//outer();
 
 //#rail();

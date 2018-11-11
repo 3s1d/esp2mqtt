@@ -9856,7 +9856,7 @@ Source: e_os_all.pdf</description>
 <part name="GND10" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+24V" device=""/>
 <part name="U$3" library="falkor" deviceset="3X2-2.00RM" device=""/>
-<part name="L2" library="Seeed-OPL-Inductor" deviceset="SMD-POWER-INDUCTOR-4.7UH-20%-750MA(2P-3.9X3.9MM)" device="" value="XAL4040-153MEB 15uH"/>
+<part name="L2" library="Seeed-OPL-Inductor" deviceset="SMD-POWER-INDUCTOR-4.7UH-20%-750MA(2P-3.9X3.9MM)" device="" value="XAL4040-153MEB / ASPI-4030S-150M-T 15uH"/>
 <part name="TP5" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP6" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="TP7" library="testpad" deviceset="TP" device="B1,27"/>

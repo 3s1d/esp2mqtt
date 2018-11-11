@@ -5,7 +5,6 @@
 #include <WebServer.h>
 #include <WiFiManager.h>
 #include <ArduinoJson.h>
-#include <OneWire.h>
 #include <ArduinoOTA.h>
 
 #include "led.h"
@@ -16,7 +15,7 @@
 //https://github.com/bbx10/WiFiManager
 
 //define your default values here, if there are different values in config.json, they are overwritten.
-char mqtt_server[40] = "orthos.fritz.box";
+char mqtt_server[40] = "apollo.fritz.box";
 char mqtt_port[6] = "1883";
 char name[40] = "esp_5ch";
 
@@ -141,8 +140,8 @@ void wifiCfg(bool autoconnect)
   //here  "AutoConnectAP"
   //and goes into a blocking loop awaiting configuration
   wifiManager.setBreakAfterConfig(true);
-  if ((autoconnect && !wifiManager.autoConnect("ESP Cfg AP", "tierischlangephrase")) ||
-      (!autoconnect && !wifiManager.startConfigPortal("ESP Cfg AP", "tierischlangephrase")))
+  if ((autoconnect && !wifiManager.autoConnect("ESP Cfg AP", "espcfg")) ||
+      (!autoconnect && !wifiManager.startConfigPortal("ESP Cfg AP", "espcfg")))
   {
     Serial.println("Evaluating config");
 
@@ -293,7 +292,8 @@ void setup()
   //WiFi.disconnect(true);
 
   /* MQTT */
-  delay(3000);    //let ips settle
+  for(int i=0; i<50 && wifi_connected==false; i++)
+    delay(100);    //let ips settle
   mqtt.setup(espClient, mqtt_server, atoi(mqtt_port), name);
 
   /* OTA */
@@ -328,7 +328,8 @@ void setup()
 
 void loop()
 {
-  ArduinoOTA.handle();
+  if(millis() < 1000*60*5)   //5min
+    ArduinoOTA.handle();
   
   /* MQTT */
   if (!mqtt.loop())

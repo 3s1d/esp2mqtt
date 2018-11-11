@@ -1797,7 +1797,7 @@ design rules under a new name.</description>
 <element name="U$2" library="transistor-fet" package="SO-8" value="IRF7413" x="6.07" y="13.31" rot="R270"/>
 <element name="U1" library="esp32" package="ESP-WROOM-32" value="ESP-WROOM-32" x="19.4" y="18.7" rot="R90"/>
 <element name="U$3" library="falkor" package="3X2-2.00RM" value="3X2-2.00RM" x="24.7" y="4.3" rot="R90"/>
-<element name="L2" library="Seeed-OPL-Inductor" package="L0420" value="XAL4040-153MEB 15uH" x="13.5" y="4.275" rot="R90">
+<element name="L2" library="Seeed-OPL-Inductor" package="L0420" value="XAL4040-153MEB / ASPI-4030S-150M-T 15uH" x="13.5" y="4.275" rot="R90">
 <attribute name="MPN" value="SPD3D16-4R7M" x="13.5" y="4.275" size="1.778" layer="27" font="vector" rot="R90" display="off"/>
 </element>
 <element name="TP5" library="testpad" package="B1,27" value="TPB1,27" x="30.015" y="20.04">

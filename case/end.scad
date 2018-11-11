@@ -76,8 +76,8 @@ module cap(esp=true)
     {
         difference()
         {
-            translate([-11,-5,0])
-                cube([22,19,4]);
+            translate([-11,-1,0])
+                cube([22,15,4]);
             translate([-3,-10,1])
                 cube([6, 24, 10]);
 
